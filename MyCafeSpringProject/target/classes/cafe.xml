@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id = "cusDao" class="com.persistence.CustomerDaoImpl"></bean>
+<bean id = "addonDao" class="com.persistence.AddonDaoImpl"></bean>
+<bean id = "coffeeDao" class="com.persistence.CoffeeDaoImpl"></bean>
+<bean id = "orderTableDao" class="com.persistence.OrderTableDaoImpl"></bean>
+<bean id = "transactionDao" class="com.persistence.TransactionDaoImpl"></bean>
+<bean id = "voucherDao" class="com.persistence.VoucherDaoImpl"></bean>
+
+<bean id = "cusService" class="com.service.CustomerServiceImpl">
+<property name ="cusDao" ref ="cusDao"></property>
+</bean>
+<bean id = "addonService" class="com.service.AddonServiceImpl">
+<property name ="addonDao" ref ="addonDao"></property>
+</bean>
+<bean id = "coffeeService" class="com.service.CoffeeServiceImpl">
+<property name ="coffeeDao" ref ="coffeeDao"></property>
+</bean>
+<bean id = "orderTableService" class="com.service.OrderTableServiceImpl">
+<property name ="orderTableDao" ref ="orderTableDao"></property>
+</bean>
+<bean id = "transactionService" class="com.service.TransactionServiceImpl">
+<property name ="transactionDao" ref ="transactionDao"></property>
+</bean>
+<bean id = "voucherService" class="com.service.VoucherServiceImpl">
+<property name ="voucherDao" ref ="voucherDao"></property>
+</bean>
+
+
+<bean id = "coffeePresentation" class="com.presentation.CoffeePresentationImpl">
+<property name ="voucherService" ref ="voucherService"></property>
+<property name ="transactionService" ref ="transactionService"></property>
+<property name ="orderTableService" ref ="orderTableService"></property>
+<property name ="coffeeService" ref ="coffeeService"></property>
+<property name ="addonService" ref ="addonService"></property>
+</bean>
+
+
+<!--  <bean id = "coffeePresentation1" class="com.presentation.CoffeePresentationImpl">
+<property name ="transactionService" ref ="transactionService"></property>
+</bean>
+<bean id = "coffeePresentation2" class="com.presentation.CoffeePresentationImpl">
+<property name ="orderTableService" ref ="orderTableService"></property>
+</bean>
+<bean id = "coffeePresentation3" class="com.presentation.CoffeePresentationImpl">
+<property name ="coffeeService" ref ="coffeeService"></property>
+</bean>
+<bean id = "coffeePresentation4" class="com.presentation.CoffeePresentationImpl">
+<property name ="addonService" ref ="addonService"></property>
+</bean>-->
+
+</beans>
